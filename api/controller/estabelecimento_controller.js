@@ -2,7 +2,7 @@ const mysql = require('../database/mysql');
 
 exports.getAll = async (req, res) => {
     try {
-        const sql = 'SELECT * FROM prestador;';
+        const sql = 'SELECT * FROM estabelecimento;';
         await mysql.execute(sql, (error, results) => {
             if (error) {
                 return res.status(500).send({ Erro: error })
@@ -31,7 +31,7 @@ exports.getAll = async (req, res) => {
 
 exports.postOne = async (req, res) => {
     try {
-        const sql = `INSERT INTO prestador(id, nome, cpf, email, senha, telefone) values (?,?,?,?,?,?);`;
+        const sql = `INSERT INTO estabelecimento(id, nome, cpf, email, senha, telefone) values (?,?,?,?,?,?);`;
         const results = await mysql.execute(sql,
             [
                 req.body.id,
@@ -61,7 +61,7 @@ exports.postOne = async (req, res) => {
 }
 exports.pathOne = async (req, res) => {
     try {
-        const query = 'UPDATE prestador SET telefone = ? WHERE id = ?;';
+        const query = 'UPDATE estabelecimento SET telefone = ? WHERE id = ?;';
         await mysql.execute(query,
             [
                 req.body.telefone,
@@ -83,7 +83,7 @@ exports.pathOne = async (req, res) => {
 
 exports.deleteOne = async (req, res) => {
     try {
-        const query = 'DELETE FROM prestador WHERE id=?;'
+        const query = 'DELETE FROM estabelecimento WHERE id=?;'
         await mysql.execute(query,
             [
                 req.body.id
@@ -101,7 +101,7 @@ exports.deleteOne = async (req, res) => {
 
 exports.verifica = async (req, res) => {
     try {
-        const query = `SELECT * FROM prestador WHERE id = ?`;
+        const query = `SELECT * FROM estabelecimento WHERE id = ?`;
         const results = await mysql.execute(query,
             [
                 req.body.id

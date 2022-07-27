@@ -8,19 +8,19 @@ var pool = mysql.createPool({
     password: 'Dbpass20!',
     database: 'nosagendamos',
     port: 3306,
-    
+
 })
 
-exports.execute = ( query, params = [] ) => {
-    return new Promise( ( resolve, reject ) => {
-        pool.query( query, params, ( error, result, fields ) => {
-            if ( error ) {
-                reject( error );
+exports.execute = (query, params = []) => {
+    return new Promise((resolve, reject) => {
+        pool.query(query, params, (error, result, fields) => {
+            if (error) {
+                reject({ Erro: error });
             } else {
-                resolve( result )
+                resolve(result)
             }
-        } );
-    } );
+        });
+    });
 }
 
 exports.pool = pool;

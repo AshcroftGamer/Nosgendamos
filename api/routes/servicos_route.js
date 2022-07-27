@@ -1,6 +1,6 @@
 const route = require('express').Router();
 
-const controller = require('../controller/prestador_controller')
+const controller = require('../controller/servicos_controller')
 
 route.get('/', controller.getAll);
 
