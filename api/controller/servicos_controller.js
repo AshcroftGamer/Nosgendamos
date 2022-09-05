@@ -51,9 +51,10 @@ exports.postOne = async (req, res) => {
         return res.status(201).send(response);
 
     } catch (error) {
-        return res.status(500).send({Erro: error})
+        return res.status(500).send({ Erro: error })
     }
 }
+
 exports.pathOne = async (req, res) => {
     try {
         const query = 'UPDATE servicos SET preco = ? WHERE id = ?;';
@@ -94,7 +95,6 @@ exports.deleteOne = async (req, res) => {
         return res.send(500).send(error);
     }
 }
-
 
 exports.verifica = async (req, res) => {
     try {
